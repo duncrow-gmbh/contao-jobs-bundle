@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  Duncrow\JobsBundle\Controller\:
+    resource: ../../Controller
+    public: true
+
+  Duncrow\JobsBundle\EventListener\:
+    resource: ../../EventListener
+    public: true
+
