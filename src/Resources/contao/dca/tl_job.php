@@ -75,15 +75,17 @@ $GLOBALS['TL_DCA'][$strName] = array
             ),
             'toggle' => array
             (
-                'icon' => 'visible.gif',
-                'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-                'button_callback' => array($strClass, 'btnToggle')
+                'href' => 'act=toggle&amp;field=published',
+                'icon' => 'visible.svg',
+                'button_callback' => array($strClass, 'toggleIcon'),
+                'showInHeader' => true
             ),
             'feature' => array
             (
+                'href' => 'act=toggle&amp;field=featured',
                 'icon' => 'featured.svg',
-                'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeatured(this,%s)"',
-                'button_callback' => array($strClass, 'featureToggle')
+                'button_callback' => array($strClass, 'featureIcon'),
+                'showInHeader' => true
             ),
             'show' => array
             (
@@ -174,14 +176,18 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'published' => array
         (
+            'exclude' => true,
             'filter' => true,
+            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => array('doNotCopy' => true, 'tl_class' => 'clr w50'),
             'sql' => "char(1) NOT NULL default '1'"
         ),
         'featured' => array
         (
+            'exclude' => true,
             'filter' => true,
+            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => array('doNotCopy' => true, 'tl_class' => 'w50'),
             'sql' => "char(1) NOT NULL default ''"
