@@ -4,6 +4,7 @@ $GLOBALS['TL_LANG']['tl_job']['title'] = array('Titel', 'Bitte geben Sie den Tit
 $GLOBALS['TL_LANG']['tl_job']['alias'] = array('Alias', 'Der Jobalias ist eine eindeutige Referenz, die anstelle der numerischen Job-ID aufgerufen werden kann.');
 $GLOBALS['TL_LANG']['tl_job']['language'] = array('Sprache', 'Bitte wählen Sie die Sprache des Jobs aus.');
 $GLOBALS['TL_LANG']['tl_job']['linkedJobs'] = array('Verlinkte Jobs', 'Bitte wählen Sie die verlinkten Jobs aus (andere Sprachen).');
+$GLOBALS['TL_LANG']['tl_job']['tags'] = array('Kategorie(n)', 'Bitte wählen Sie die Kategorie(n) des Jobs aus oder geben Sie eine Neue ein.');
 $GLOBALS['TL_LANG']['tl_job']['description'] = array('Beschreibung', 'Bitte wählen Sie die Beschreibung des Jobs ein.');
 
 

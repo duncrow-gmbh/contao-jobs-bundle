@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "require": {
     "terminal42/notification_center": "^1.6",
-    "terminal42/contao-changelanguage": "^3.3"
+    "terminal42/contao-changelanguage": "^3.3",
+    "codefog/tags-bundle": "^3.3"
   },
   "autoload": {
     "psr-4": {

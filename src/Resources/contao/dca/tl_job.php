@@ -100,7 +100,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,description;
+			{general_legend},title,alias,language,linkedJobs,tags,description;
 		    {publish_legend},published,featured,start,stop
 		'
     ),
@@ -165,6 +165,18 @@ $GLOBALS['TL_DCA'][$strName] = array
             'options_callback' => array($strClass, 'getLinkedJobOptions'),
             'eval' => array('mandatory' => false, 'multiple' => true, 'chosen' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'),
             'sql' => "varchar(255) NOT NULL default ''"
+        ),
+        'tags' => array(
+            'exclude' => true,
+            'inputType' => 'cfgTags',
+            'eval' => array(
+                'tagsManager' => 'contao_jobs_bundle', // Manager name, required
+                'tagsCreate' => true, // Allow to create tags, optional (true by default)
+                'tagsSource' => 'tl_job.tags', // Tag source, optional (defaults to current table and current field)
+                'maxItems' => 10, // Maximum number of tags allowed
+                'hideList' => true, // Hide the list of tags; the input field will be still visible
+                'tl_class' => 'w50'
+            )
         ),
         'description' => array
         (
