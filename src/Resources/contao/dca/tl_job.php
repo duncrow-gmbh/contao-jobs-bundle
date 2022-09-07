@@ -2,8 +2,12 @@
 
 $strName = 'tl_job';
 $strClass = '\Duncrow\JobsBundle\Backend\Job';
+
 $this->loadDataContainer('tl_content');
 $this->loadDataContainer('tl_module');
+
+$this->loadLanguageFile('opengraph_fields');
+$this->loadDataContainer('opengraph_fields');
 
 $GLOBALS['TL_DCA'][$strName] = array
 (
@@ -101,6 +105,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         '__selector__' => array(),
         'default' => '
 			{general_legend},title,alias,language,linkedJobs,tags,description;
+			{meta_legend},metaTitle,metaDescription;
 		    {publish_legend},published,featured,start,stop
 		'
     ),
@@ -186,6 +191,21 @@ $GLOBALS['TL_DCA'][$strName] = array
             'sql' => "text NULL"
         ),
 
+        'metaTitle' => array
+        (
+            'search' => true,
+            'inputType' => 'text',
+            'eval' => array('mandatory' => false, 'allowHtml' => true, 'maxlength' => 255, 'tl_class' => 'clr w50'),
+            'sql' => "varchar(255) NOT NULL default ''"
+        ),
+        'metaDescription' => array
+        (
+            'search' => true,
+            'inputType' => 'textarea',
+            'eval' => array('mandatory' => false, 'tl_class' => 'w50'),
+            'sql' => "text NULL"
+        ),
+
         'published' => array
         (
             'exclude' => true,
@@ -218,3 +238,27 @@ $GLOBALS['TL_DCA'][$strName] = array
         )
     )
 );
+
+
+# Add opengraph fields
+$GLOBALS['TL_DCA']['tl_job']['fields'] = array_merge(
+    $GLOBALS['TL_DCA']['tl_job']['fields'],
+    $GLOBALS['TL_DCA']['opengraph_fields']['fields']
+);
+
+# Add opengraph legends
+$GLOBALS['TL_DCA']['tl_job']['palettes']['default'] = str_replace(
+    '{publish_legend',
+    $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{publish_legend',
+    $GLOBALS['TL_DCA']['tl_job']['palettes']['default']
+);
+
+array_walk(
+    $GLOBALS['TL_LANG']['opengraph_fields']['legends'],
+    function ($translation, $key) {
+        $GLOBALS['TL_LANG']['tl_job'][$key] = $translation;
+    }
+);
+
+# Restrict available types
+$GLOBALS['TL_DCA']['tl_job']['config']['allowedOpenGraphTypes'] = ['website'];

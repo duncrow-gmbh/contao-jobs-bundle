@@ -4,7 +4,10 @@
   "require": {
     "terminal42/notification_center": "^1.6",
     "terminal42/contao-changelanguage": "^3.3",
-    "codefog/tags-bundle": "^3.3"
+    "codefog/tags-bundle": "^3.3",
+    "terminal42/contao-conditionalformfields": "^3.0",
+    "terminal42/contao-mp_forms": "^4.4",
+    "numero2/contao-opengraph3": "^4.2"
   },
   "autoload": {
     "psr-4": {

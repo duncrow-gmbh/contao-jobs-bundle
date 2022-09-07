@@ -1,5 +1,6 @@
 <?php
 
+$GLOBALS['TL_LANG']['tl_job']['tstamp'] = array('Änderungsdatum', 'Datum und Uhrzeit der letzten Änderung');
 $GLOBALS['TL_LANG']['tl_job']['title'] = array('Titel', 'Bitte geben Sie den Titel des Jobs ein.');
 $GLOBALS['TL_LANG']['tl_job']['alias'] = array('Alias', 'Der Jobalias ist eine eindeutige Referenz, die anstelle der numerischen Job-ID aufgerufen werden kann.');
 $GLOBALS['TL_LANG']['tl_job']['language'] = array('Sprache', 'Bitte wählen Sie die Sprache des Jobs aus.');
@@ -7,6 +8,8 @@ $GLOBALS['TL_LANG']['tl_job']['linkedJobs'] = array('Verlinkte Jobs', 'Bitte wä
 $GLOBALS['TL_LANG']['tl_job']['tags'] = array('Kategorie(n)', 'Bitte wählen Sie die Kategorie(n) des Jobs aus oder geben Sie eine Neue ein.');
 $GLOBALS['TL_LANG']['tl_job']['description'] = array('Beschreibung', 'Bitte wählen Sie die Beschreibung des Jobs ein.');
 
+$GLOBALS['TL_LANG']['tl_job']['metaTitle'] = array('Metatitel', 'Bitte geben Sie den Metatitel des Jobs ein.');
+$GLOBALS['TL_LANG']['tl_job']['metaDescription'] = array('Metabeschreibung', 'Bitte geben Sie die Metabeschreibung des Jobs ein.');
 
 $GLOBALS['TL_LANG']['tl_job']['published'] = array('Job veröffentlichen', 'Den Job auf der Webseite anzeigen.');
 $GLOBALS['TL_LANG']['tl_job']['featured'] = array('Job hervorheben', 'Den Job auf der Webseite hervorheben.');
@@ -18,6 +21,7 @@ $GLOBALS['TL_LANG']['tl_job']['stop'] = array('Anzeigen bis', 'Wenn Sie der Job 
  * Legends
  */
 $GLOBALS['TL_LANG']['tl_job']['general_legend'] = 'Allgemeine Infos';
+$GLOBALS['TL_LANG']['tl_job']['meta_legend'] = 'Metadaten';
 $GLOBALS['TL_LANG']['tl_job']['information_legend'] = 'Jobeigenschaften';
 $GLOBALS['TL_LANG']['tl_job']['image_legend'] = 'Bildeinstellungen';
 $GLOBALS['TL_LANG']['tl_job']['publish_legend'] = 'Veröffentlichung';

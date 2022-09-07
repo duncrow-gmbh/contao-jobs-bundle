@@ -7,3 +7,14 @@ $GLOBALS['BE_MOD']['content']['jobs'] = array(
 );
 
 $GLOBALS['TL_MODELS']['tl_job'] = JobModel::class;
+
+$GLOBALS['TL_OG_MODULES'] = array_merge(
+    $GLOBALS['TL_OG_MODULES'],
+    array(
+        array(
+            'jobreader',
+            'Duncrow\JobsBundle\Controller\FrontendModule\JobReaderController',
+            'Duncrow\JobsBundle\OpenGraph\OpenGraphJob'
+        )
+    )
+);
