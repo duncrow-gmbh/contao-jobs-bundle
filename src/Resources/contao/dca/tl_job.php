@@ -1,7 +1,12 @@
 <?php
 
+use Contao\DataContainer;
+use Contao\Image;
+use Contao\StringUtil;
+use Contao\System;
+use Duncrow\JobsBundle\Model\JobModel;
+
 $strName = 'tl_job';
-$strClass = '\Duncrow\JobsBundle\Backend\Job';
 
 $this->loadDataContainer('tl_content');
 $this->loadDataContainer('tl_module');
@@ -81,14 +86,14 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'href' => 'act=toggle&amp;field=published',
                 'icon' => 'visible.svg',
-                'button_callback' => array($strClass, 'toggleIcon'),
+                'button_callback' => array('tl_job', 'toggleIcon'),
                 'showInHeader' => true
             ),
             'feature' => array
             (
                 'href' => 'act=toggle&amp;field=featured',
                 'icon' => 'featured.svg',
-                'button_callback' => array($strClass, 'featureIcon'),
+                'button_callback' => array('tl_job', 'featureIcon'),
                 'showInHeader' => true
             ),
             'show' => array
@@ -150,7 +155,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval' => array('rgxp' => 'alias', 'doNotCopy' => true, 'unique' => false, 'maxlength' => 255, 'tl_class' => 'w50'),
             'save_callback' => array
             (
-                array($strClass, 'generateAlias')
+                array('tl_job', 'generateAlias')
             ),
             'sql' => "varchar(255) BINARY NOT NULL default ''"
         ),
@@ -167,7 +172,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         (
             'exclude' => true,
             'inputType' => 'select',
-            'options_callback' => array($strClass, 'getLinkedJobOptions'),
+            'options_callback' => array('tl_job', 'getLinkedJobsOptions'),
             'eval' => array('mandatory' => false, 'multiple' => true, 'chosen' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'),
             'sql' => "varchar(255) NOT NULL default ''"
         ),
@@ -262,3 +267,69 @@ array_walk(
 
 # Restrict available types
 $GLOBALS['TL_DCA']['tl_job']['config']['allowedOpenGraphTypes'] = ['website'];
+
+class tl_job extends Contao\Backend
+{
+    private $strName = 'tl_job';
+
+    public function toggleIcon($row, $href, $label, $title, $icon, $attributes): string
+    {
+        $href .= '&amp;id=' . $row['id'];
+
+        if (!$row['published'])
+        {
+            $icon = 'invisible.svg';
+        }
+
+        return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($title) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="' . Image::getPath('visible.svg') . '" data-icon-disabled="' . Image::getPath('invisible.svg') . '" data-state="' . ($row['published'] ? 1 : 0) . '"') . '</a> ';
+    }
+
+    public function featureIcon($row, $href, $label, $title, $icon, $attributes): string
+    {
+        $href .= '&amp;id=' . $row['id'];
+
+        if (!$row['featured'])
+        {
+            $icon = 'featured_.svg';
+        }
+
+        return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($title) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="' . Image::getPath('featured.svg') . '" data-icon-disabled="' . Image::getPath('featured_.svg') . '" data-state="' . ($row['featured'] ? 1 : 0) . '"') . '</a> ';
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function generateAlias($varValue, DataContainer $dc)
+    {
+        $aliasExists = function (string $alias) use ($dc): bool {
+            return $this->Database->prepare("SELECT id FROM {$this->strName} WHERE alias=? AND id!=?")->execute($alias, $dc->id)->numRows > 0;
+        };
+
+        // Generate alias if there is none
+        if (!$varValue) {
+            $varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->title, $aliasExists);
+        } elseif (preg_match('/^[1-9]\d*$/', $varValue)) {
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasNumeric'], $varValue));
+        } elseif ($aliasExists($varValue)) {
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+        }
+
+        return $varValue;
+    }
+
+    public function getLinkedJobsOptions(DataContainer $dc): array
+    {
+        $return = [];
+        $jobsWithOtherLanguage = JobModel::findBy(array('language!=?'), array($dc->activeRecord->language));
+
+        if($jobsWithOtherLanguage) {
+            while ($jobsWithOtherLanguage->next()) {
+                $current = $jobsWithOtherLanguage->current();
+                $title = $current->title;
+                $return[Locale::getDisplayName($current->language)][$current->id] = "$title [".Locale::getDisplayName($current->language)."]";
+            }
+        }
+
+        return $return;
+    }
+}

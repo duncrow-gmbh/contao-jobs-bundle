@@ -1,0 +1,9 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="items">
+    <?= implode('', $this->items) ?>
+</div>
+
+<?php $this->endblock(); ?>

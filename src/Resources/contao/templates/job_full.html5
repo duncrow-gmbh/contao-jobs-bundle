@@ -1,0 +1,5 @@
+<div class="job_full <?= $this->class ?>">
+    <div class="inner">
+        <?= implode('', $this->elements) ?>
+    </div>
+</div>

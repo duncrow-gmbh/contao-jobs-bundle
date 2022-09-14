@@ -16,6 +16,11 @@ $GLOBALS['TL_LANG']['tl_job']['featured'] = array('Job hervorheben', 'Den Job au
 $GLOBALS['TL_LANG']['tl_job']['start'] = array('Anzeigen ab', 'Wenn Sie der Job erst ab einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.');
 $GLOBALS['TL_LANG']['tl_job']['stop'] = array('Anzeigen bis', 'Wenn Sie der Job nur bis zu einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.');
 
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] = 'Mehr Infos';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] = 'Auswählen und weiter';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] = 'Schliessen';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] = 'Teilen';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] = 'Drucken';
 
 /**
  * Legends

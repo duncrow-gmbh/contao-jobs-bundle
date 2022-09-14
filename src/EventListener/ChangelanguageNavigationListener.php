@@ -25,12 +25,12 @@ class ChangelanguageNavigationListener
         $arrColumns[] = "language='". $GLOBALS['TL_LANGUAGE'] ."'";
         $currentElement = JobModel::findOneBy($arrColumns, null);
 
-        if(!count(unserialize($currentElement->linkedProject)))
+        if(!count(unserialize($currentElement->linkedJobs)))
             return;
 
         if($language !== $GLOBALS['TL_LANGUAGE']) {
-            foreach(unserialize($currentElement->linkedProject) as $linkedProjectId) {
-                $newElement = JobModel::findOneBy(array('id=? and language=?'), array($linkedProjectId, $language), array());
+            foreach(unserialize($currentElement->linkedJobs) as $linkedJobId) {
+                $newElement = JobModel::findOneBy(array('id=? and language=?'), array($linkedJobId, $language), array());
                 if($newElement) {
                     $newAlias = $newElement->alias;
 

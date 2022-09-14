@@ -1,0 +1,23 @@
+<div class="job_short <?= $this->class ?>" id="job_<?= $this->id ?>">
+    <div class="inner">
+        <h4><?= $this->title ?></h4>
+        <div class="description"><?= $this->description ?></div>
+        <div class="links">
+            <button class="btn btn-secondary open-overlay"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] ?><span class="ms-2">{{far::info-circle}}</span></button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobreader-modal"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus}}</span></button>
+        </div>
+    </div>
+
+    <div class="overlay">
+        <div class="inner">
+            <div class="actions">
+                <button class="btn btn-secondary close-overlay"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] ?><span class="ms-2">{{far::times}}</span></button>
+                <button class="btn btn-black share-job"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?><span class="ms-2">{{far::share-nodes}}</span></button>
+                <button class="btn btn-black print-job"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?><span class="ms-2">{{far::print}}</span></button>
+            </div>
+            <div class="content">
+                <iframe src="<?= $this->href ?>"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

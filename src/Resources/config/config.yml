@@ -1,0 +1,4 @@
+codefog_tags:
+  managers:
+    contao_jobs_bundle:
+      source: 'tl_job.tags'
