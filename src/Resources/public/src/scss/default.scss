@@ -12,6 +12,7 @@ body {
 
       > .links {
         display: flex;
+        flex-flow: row wrap;
         justify-content: space-between;
       }
     }
@@ -43,6 +44,10 @@ body {
         background: #FFFFFF;
         display: flex;
 
+        @media (max-width: 991px) {
+          flex-flow: column;
+        }
+
         > .actions {
           padding: 1.5rem;
           display: flex;
@@ -55,13 +60,30 @@ body {
 
           button, a {
             width: 100%;
-            display: block;
+            display: flex;
+            justify-content: space-between;
             text-transform: uppercase;
             text-align: left;
           }
 
           > .bottom {
             margin-top: auto;
+          }
+
+          @media (max-width: 991px) {
+            flex-flow: row wrap;
+
+            > button, > a {
+              width: auto;
+
+              > .text {
+                display: none;
+              }
+
+              > .ms-2 {
+                margin: 0 !important;
+              }
+            }
           }
         }
 
