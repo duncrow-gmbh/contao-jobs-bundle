@@ -1,0 +1,9 @@
+<div class="application_online">
+
+    {{insert_form::<?= $this->applicationForm ?>}}
+
+    <div class="progress">
+        <div class="progress-bar" style="width:{{mp_forms::<?= $this->applicationForm ?>::step::percentage}}%"></div>
+    </div>
+
+</div>

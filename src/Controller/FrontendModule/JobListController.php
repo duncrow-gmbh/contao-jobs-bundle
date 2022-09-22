@@ -115,7 +115,7 @@ class JobListController extends AbstractJobController
         asort($allTags);
         $template->tags = $allTags;
 
-        $template->items = $this->parseItems($objJobs, $model->jumpTo, $model->job_template);
+        $template->items = $this->parseItems($objJobs, $model->jumpToReader, $model->jumpToApplication, $model->job_template);
 
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/duncrowgmbhcontaojobs/dist/js/script.js';
         $GLOBALS['TL_CSS'][] = 'bundles/duncrowgmbhcontaojobs/dist/css/style.css';

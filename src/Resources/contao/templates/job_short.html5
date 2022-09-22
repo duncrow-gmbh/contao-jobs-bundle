@@ -4,7 +4,7 @@
         <div class="description"><?= $this->description ?></div>
         <div class="links">
             <button class="btn btn-secondary open-overlay"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] ?><span class="ms-2">{{far::info-circle}}</span></button>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobreader-modal"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus}}</span></button>
+            <a href="<?= $this->hrefApplication ?>" class="btn btn-primary"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus}}</span></a>
         </div>
     </div>
 
@@ -12,8 +12,11 @@
         <div class="inner">
             <div class="actions">
                 <button class="btn btn-secondary close-overlay"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] ?><span class="ms-2">{{far::times}}</span></button>
-                <button class="btn btn-black share-job"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?><span class="ms-2">{{far::share-nodes}}</span></button>
-                <button class="btn btn-black print-job"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?><span class="ms-2">{{far::print}}</span></button>
+                <a href="<?= $this->href ?>" class="btn btn-black share-job" target="_blank"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?><span class="ms-2">{{far::share-nodes}}</span></a>
+                <a href="<?= $this->href ?>?action=print" class="btn btn-black print-job" target="_blank"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?><span class="ms-2">{{far::print}}</span></a>
+                <div class="bottom">
+                    <a href="<?= $this->hrefApplication ?>" class="btn btn-primary"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus}}</span></a>
+                </div>
             </div>
             <div class="content">
                 <iframe src="<?= $this->href ?>"></iframe>

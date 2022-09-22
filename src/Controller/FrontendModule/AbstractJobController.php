@@ -12,7 +12,7 @@ use Contao\System;
 
 abstract class AbstractJobController extends AbstractFrontendModuleController
 {
-    protected function parseItems($objItems, $jumpTo, $template = 'job_short'): array
+    protected function parseItems($objItems, $jumpToReader, $jumpToApplication, $template = 'job_short'): array
     {
         $arrItems = array();
 
@@ -22,17 +22,22 @@ abstract class AbstractJobController extends AbstractFrontendModuleController
         while ($objItems->next())
         {
             $objItem = $objItems->current();
-            $arrItems[] = $this->parseItem($objItem, $jumpTo, $template);
+            $arrItems[] = $this->parseItem($objItem, $jumpToReader, $jumpToApplication, $template);
         }
 
         return $arrItems;
     }
 
-    protected function parseItem($objItem, $jumpTo = null, $template = 'job_full')
+    protected function parseItem($objItem, $jumpToReader = null, $jumpToApplication = null, $template = 'job_full')
     {
-        if($jumpTo) {
-            $objDetailLink = PageModel::findWithDetails($jumpTo);
-            $objItem->href = ampersand($objDetailLink->getFrontendUrl('/' . $objItem->alias));
+        if($jumpToReader) {
+            $objDetailLink = PageModel::findWithDetails($jumpToReader);
+            $objItem->href = $objDetailLink->getFrontendUrl('/' . $objItem->alias);
+        }
+
+        if($jumpToApplication) {
+            $objDetailLink = PageModel::findWithDetails($jumpToApplication);
+            $objItem->hrefApplication = $objDetailLink->getFrontendUrl('/' . $objItem->alias);
         }
 
         $arrElements = array();

@@ -6,8 +6,11 @@
     "terminal42/contao-changelanguage": "^3.3",
     "codefog/tags-bundle": "^3.3",
     "terminal42/contao-conditionalformfields": "^3.0",
+    "netzmacht/contao-font-awesome-inserttag": "^2.2",
     "terminal42/contao-mp_forms": "^4.4",
-    "numero2/contao-opengraph3": "^4.2"
+    "numero2/contao-opengraph3": "^4.2",
+    "hofff/contao-calendarfield": "^4.0",
+    "terminal42/contao-fineuploader": "^3.3"
   },
   "autoload": {
     "psr-4": {
@@ -26,5 +29,11 @@
   },
   "extra": {
     "contao-manager-plugin": "Duncrow\\JobsBundle\\ContaoManager\\Plugin"
+  },
+  "config": {
+    "allow-plugins": {
+      "contao-components/installer": true,
+      "contao-community-alliance/composer-plugin": true
+    }
   }
 }

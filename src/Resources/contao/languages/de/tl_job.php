@@ -22,6 +22,18 @@ $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] = 'Schliessen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] = 'Teilen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] = 'Drucken';
 
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['online'] = 'Online bewerben';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['onlineText'] = 'Du bist von uns überzeugt? Gleich hier alle Daten eingeben und Bewerbung abschicken.';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['onlineLinkTitle'] = 'Jetzt bewerben';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['telephone'] = 'Rückruf anfordern';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['telephoneText'] = 'Du hast Fragen zur Anstellung, unserem Betrieb oder möchtest persönlich mit uns sprechen.';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['telephoneLinkTitle'] = 'Rückruf anfordern';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['meeting'] = 'Termin reservieren';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['meetingText'] = 'Komm auf einen Kaffee bei uns im Betrieb vorbei und wir besprechen alles vor Ort - Bewerbungsunterlagen bringst du am besten gleich mit.';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['meetingLinkTitle'] = 'Termin reservieren';
+
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] = 'Zur Jobseite';
+
 /**
  * Legends
  */

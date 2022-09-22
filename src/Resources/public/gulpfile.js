@@ -12,6 +12,7 @@ const paths = {
         styles: themePath + 'src/scss/default.scss',
         scripts: [
             //libs
+            'node_modules/scrolltofixed/jquery-scrolltofixed-min.js',
 
             themePath + 'src/js/**/*.js',
         ],

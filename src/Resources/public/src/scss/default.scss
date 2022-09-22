@@ -45,12 +45,23 @@ body {
 
         > .actions {
           padding: 1.5rem;
+          display: flex;
+          flex-flow: column;
+          justify-content: flex-start;
 
-          > button, > a {
+          @media print {
+            display: none;
+          }
+
+          button, a {
             width: 100%;
             display: block;
             text-transform: uppercase;
             text-align: left;
+          }
+
+          > .bottom {
+            margin-top: auto;
           }
         }
 
@@ -64,6 +75,83 @@ body {
             height: 100%;
           }
         }
+      }
+    }
+  }
+}
+
+.mod_jobapplication {
+  > .options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    .option {
+      flex: 1;
+      padding: 15px;
+      position: relative;
+
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+
+      > .inner {
+        height: 100%;
+        background: #FFFFFF;
+        padding: 1.5rem;
+        display: flex;
+        flex-flow: column;
+
+        > .icon {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        > .text {
+          text-align: center;
+        }
+
+        > .links {
+          margin-top: auto;
+          display: flex;
+          flex-flow: column;
+
+          > .btn {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mod_jobapplicationbanner {
+  background: #FFFFFF;
+
+  @media (max-width: 991px) {
+    display: none;
+  }
+
+  > .container {
+    > .inner {
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+
+      > .image {
+        padding: .5rem 0;
+
+        > img {
+          max-width: 240px;
+        }
+      }
+
+      > .btn {
+        margin: 0;
+        display: flex;
+        align-items: center;
       }
     }
   }
