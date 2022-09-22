@@ -81,7 +81,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_online_text'] = array
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => array('tl_class' => 'w50', 'mandatory' => true),
-    'sql' => "text NOT NULL default ''",
+    'sql' => "text NOT NULL",
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_online_linkTitle'] = array(
     'exclude' => true,
@@ -122,7 +122,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_telephone_text'] = ar
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => array('tl_class' => 'w50', 'mandatory' => true),
-    'sql' => "text NOT NULL default ''",
+    'sql' => "text NOT NULL",
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_telephone_linkTitle'] = array(
     'exclude' => true,
@@ -160,7 +160,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_meeting_text'] = arra
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => array('tl_class' => 'w50', 'mandatory' => true),
-    'sql' => "text NOT NULL default ''",
+    'sql' => "text NOT NULL",
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_meeting_linkTitle'] = array(
     'exclude' => true,
