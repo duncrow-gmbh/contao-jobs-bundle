@@ -25,6 +25,7 @@ class JobApplicationController extends AbstractFrontendModuleController
 {
     private $job;
     private $module;
+    private $progressWidth = 40;
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
     {
@@ -52,11 +53,18 @@ class JobApplicationController extends AbstractFrontendModuleController
         $this->getPageModel()->pageTitle = $this->getPageModel()->title . ' - ' . $this->job->title;
 
         if($type = Input::get('type')) {
-            $template->application = $this->parseItem($type, $model);
+            $template->application = $this->parseItem($type);
+            $this->progressWidth = 60;
+        }
+
+        if($step = Input::get('step')) {
+            $this->progressWidth += $step * 20;
         }
 
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/duncrowgmbhcontaojobs/dist/js/script.js';
         $GLOBALS['TL_CSS'][] = 'bundles/duncrowgmbhcontaojobs/dist/css/style.css';
+
+        $template->progressWidth = $this->progressWidth;
 
         return $template->getResponse();
     }

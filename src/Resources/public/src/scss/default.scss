@@ -152,11 +152,15 @@ body {
 .mod_jobapplicationbanner {
   background: #FFFFFF;
 
-  @media (max-width: 991px) {
-    display: none;
+  &.block {
+    overflow: visible;
   }
 
   > .container {
+    @media (max-width: 991px) {
+      padding: 0;
+    }
+
     > .inner {
       display: flex;
       justify-content: space-between;
@@ -167,6 +171,10 @@ body {
 
         > img {
           max-width: 240px;
+
+          @media (max-width: 991px) {
+            max-width: 45vw;
+          }
         }
       }
 

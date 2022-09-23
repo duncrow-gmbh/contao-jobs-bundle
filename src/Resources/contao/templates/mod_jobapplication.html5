@@ -63,4 +63,8 @@
     </div>
 <?php endif; ?>
 
+    <div class="progress mt-4">
+        <div class="progress-bar" style="width: <?= $this->progressWidth ?>%;"></div>
+    </div>
+
 <?php $this->endblock(); ?>

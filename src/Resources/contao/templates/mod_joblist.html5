@@ -6,4 +6,8 @@
     <?= implode('', $this->items) ?>
 </div>
 
+<div class="progress mt-4">
+    <div class="progress-bar" style="width: 20%;"></div>
+</div>
+
 <?php $this->endblock(); ?>
