@@ -9,6 +9,7 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 use Duncrow\JobsBundle\DuncrowGmbHContaoJobsBundle;
 use Exception;
+use numero2\Opengraph3Bundle\Opengraph3Bundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class Plugin implements BundlePluginInterface, ConfigPluginInterface
@@ -19,7 +20,10 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(DuncrowGmbHContaoJobsBundle::class)->setLoadAfter([ContaoCoreBundle::class]),
+            BundleConfig::create(DuncrowGmbHContaoJobsBundle::class)->setLoadAfter([
+                ContaoCoreBundle::class,
+                Opengraph3Bundle::class
+            ]),
         ];
     }
 
