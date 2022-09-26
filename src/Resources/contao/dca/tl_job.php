@@ -57,6 +57,10 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'href' => 'act=select',
                 'class' => 'header_edit_all',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+            ),
+            'settings' => array(
+                'href' => 'table=tl_job_settings',
+                'class' => 'header_icon job_settings',
             )
         ),
         'operations' => array

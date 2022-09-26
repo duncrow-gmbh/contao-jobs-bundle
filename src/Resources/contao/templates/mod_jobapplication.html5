@@ -67,4 +67,16 @@
         <div class="progress-bar" style="width: <?= $this->progressWidth ?>%;"></div>
     </div>
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            "title": "<?= $this->job->title ?>",
+            "description": "<?= $this->job->description ?>",
+            "datePosted": "<?= date('Y-m-d', $this->job->tstamp) ?>",
+            "hiringOrganization": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?>},
+            "jobLocation": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?>}
+        }
+    </script>
+
 <?php $this->endblock(); ?>

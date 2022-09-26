@@ -1,5 +1,7 @@
 <?php
 
+$GLOBALS['TL_LANG']['tl_job']['settings'] = array('Einstellungen', '');
+
 $GLOBALS['TL_LANG']['tl_job']['tstamp'] = array('Änderungsdatum', 'Datum und Uhrzeit der letzten Änderung');
 $GLOBALS['TL_LANG']['tl_job']['title'] = array('Titel', 'Bitte geben Sie den Titel des Jobs ein.');
 $GLOBALS['TL_LANG']['tl_job']['alias'] = array('Alias', 'Der Jobalias ist eine eindeutige Referenz, die anstelle der numerischen Job-ID aufgerufen werden kann.');
