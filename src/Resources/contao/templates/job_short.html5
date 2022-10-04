@@ -1,0 +1,40 @@
+<?php $this->loadLanguageFile('tl_job'); ?>
+
+<div class="job_short <?= $this->class ?>" id="job_<?= $this->id ?>">
+    <div class="inner">
+        <h4><?= $this->title ?></h4>
+        <div class="description"><?= $this->description ?></div>
+        <div class="links">
+            <button class="btn btn-secondary open-overlay"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] ?><span class="ms-2">{{far::info-circle}}</span></button>
+            <a href="<?= $this->hrefApplication ?>" class="btn btn-primary"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus}}</span></a>
+        </div>
+    </div>
+
+    <div class="overlay">
+        <div class="inner">
+            <div class="actions">
+                <button class="btn btn-secondary close-overlay"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] ?></span><span class="ms-2">{{far::times fw}}</span></button>
+                <a href="<?= $this->href ?>" class="btn btn-black share-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?></span><span class="ms-2">{{far::share-nodes fw}}</span></a>
+                <a href="<?= $this->href ?>?action=print" class="btn btn-black print-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?></span><span class="ms-2">{{far::print fw}}</span></a>
+                <div class="bottom">
+                    <a href="<?= $this->hrefApplication ?>" class="btn btn-primary"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] ?><span class="ms-2">{{far::user-plus fw}}</span></a>
+                </div>
+            </div>
+            <div class="content">
+                <iframe src="<?= $this->href ?>"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            "title": "<?= $this->title ?>",
+            "description": "<?= $this->description ?>",
+            "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
+            "hiringOrganization": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?>},
+            "jobLocation": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?>}
+        }
+    </script>
+</div>

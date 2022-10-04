@@ -1,0 +1,13 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="items">
+    <?= implode('', $this->items) ?>
+</div>
+
+<div class="progress mt-4">
+    <div class="progress-bar" style="width: 20%;"></div>
+</div>
+
+<?php $this->endblock(); ?>

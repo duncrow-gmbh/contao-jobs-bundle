@@ -1,0 +1,16 @@
+<div class="job_full <?= $this->class ?>">
+    <div class="inner">
+        <?= implode('', $this->elements) ?>
+    </div>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            "title": "<?= $this->title ?>",
+            "description": "<?= $this->description ?>",
+            "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
+            "hiringOrganization": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?>},
+            "jobLocation": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?>}
+        }
+    </script>
+</div>

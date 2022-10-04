@@ -1,0 +1,17 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php $this->loadLanguageFile('tl_job'); ?>
+
+<div class="container">
+    <div class="inner">
+        <div class="image">
+            <?php $image = \Contao\FilesModel::findByUuid($this->image); ?>
+            {{image::<?= $image->path ?>?height=75}}
+        </div>
+        <a href="<?= $this->href ?>" class="btn btn-primary btn-lg"><?php if($this->job_applicationBanner_linkTitle): ?><?= $this->job_applicationBanner_linkTitle ?><?php else: ?><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] ?><?php endif; ?></a>
+    </div>
+</div>
+
+<?php $this->endblock(); ?>

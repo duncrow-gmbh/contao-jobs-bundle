@@ -1,0 +1,82 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php if ($this->application): ?>
+    <?= $this->application ?>
+<?php else: ?>
+    <div class="options">
+        <?php if ($this->module->job_application_online): ?>
+            <div class="option">
+                <div class="inner">
+                    <div class="icon">
+                        {{far::<?= $this->module->job_application_online_icon ?> 7x}}
+                    </div>
+                    <div class="text">
+                        <h3><?= $this->module->job_application_online_title ?></h3>
+                        <p><?= $this->module->job_application_online_text ?></p>
+                    </div>
+                    <div class="links">
+                        <a href="{{env::request}}?type=online"
+                           class="btn btn-secondary"><?= $this->module->job_application_online_linkTitle ?>
+                            <span class="ms-2">{{far::<?= $this->module->job_application_online_icon ?>}}</span></a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->module->job_application_telephone): ?>
+            <div class="option">
+                <div class="inner">
+                    <div class="icon">
+                        {{far::<?= $this->module->job_application_telephone_icon ?> 7x}}
+                    </div>
+                    <div class="text">
+                        <h3><?= $this->module->job_application_telephone_title ?></h3>
+                        <p><?= $this->module->job_application_telephone_text ?></p>
+                    </div>
+                    <div class="links">
+                        <a href="{{link_url::<?= $this->module->jumpToTelephone ?>}}?job=<?= $this->job->title ?>"
+                           class="btn btn-secondary"><?= $this->module->job_application_telephone_linkTitle ?>
+                            <span class="ms-2">{{far::<?= $this->module->job_application_telephone_icon ?>}}</span></a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->module->job_application_meeting): ?>
+            <div class="option">
+                <div class="inner">
+                    <div class="icon">
+                        {{far::<?= $this->module->job_application_meeting_icon ?> 7x}}
+                    </div>
+                    <div class="text">
+                        <h3><?= $this->module->job_application_meeting_title ?></h3>
+                        <p><?= $this->module->job_application_meeting_text ?></p>
+                    </div>
+                    <div class="links">
+                        <a href="{{link_url::<?= $this->module->jumpToMeeting ?>}}?job=<?= $this->job->title ?>"
+                           class="btn btn-secondary"><?= $this->module->job_application_meeting_linkTitle ?>
+                            <span class="ms-2">{{far::<?= $this->module->job_application_meeting_icon ?>}}</span></a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+    <div class="progress mt-4">
+        <div class="progress-bar" style="width: <?= $this->progressWidth ?>%;"></div>
+    </div>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            "title": "<?= $this->job->title ?>",
+            "description": "<?= $this->job->description ?>",
+            "datePosted": "<?= date('Y-m-d', $this->job->tstamp) ?>",
+            "hiringOrganization": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?>},
+            "jobLocation": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?>}
+        }
+    </script>
+
+<?php $this->endblock(); ?>

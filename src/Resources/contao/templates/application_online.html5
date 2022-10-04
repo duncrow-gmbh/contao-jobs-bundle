@@ -1,0 +1,5 @@
+<div class="application_online">
+
+    {{insert_form::<?= $this->applicationForm ?>}}
+
+</div>
