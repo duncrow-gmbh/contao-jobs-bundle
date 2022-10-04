@@ -39,8 +39,8 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         'sorting' => array
         (
-            'mode' => DataContainer::MODE_SORTED,
-            'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
+            'mode' => 1,
+            'flag' => 1,
             'fields' => array('title'),
             'panelLayout' => 'filter;search'
         ),
