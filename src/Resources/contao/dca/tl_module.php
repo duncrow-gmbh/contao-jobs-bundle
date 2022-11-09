@@ -2,7 +2,7 @@
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,job_order,job_showFilter;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{config_legend},jumpToApplication;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobapplication'] = '{title_legend},name,type;{online_legend:hide},job_application_online;{telephone_legend:hide},job_application_telephone;{meeting_legend:hide},job_application_meeting;{template_legend:hide},customTpl;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'] = array_merge(

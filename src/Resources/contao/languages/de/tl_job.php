@@ -20,6 +20,7 @@ $GLOBALS['TL_LANG']['tl_job']['stop'] = array('Anzeigen bis', 'Wenn Sie der Job 
 
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] = 'Mehr Infos';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['selectAndContinue'] = 'Auswählen und weiter';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] = 'Jetzt bewerben';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] = 'Schliessen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] = 'Teilen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] = 'Drucken';

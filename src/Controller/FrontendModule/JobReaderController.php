@@ -41,7 +41,7 @@ class JobReaderController extends AbstractJobController
         if(!$objJob)
             throw new PageNotFoundException();
 
-        $template->item = $this->parseItem($objJob);
+        $template->item = $this->parseItem($objJob, null, $model->jumpToApplication);
 
         $this->getPageModel()->pageTitle = $objJob->title;
 
