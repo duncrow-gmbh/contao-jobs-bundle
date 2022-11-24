@@ -24,6 +24,7 @@ $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] = 'Jetzt bewerben';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['close'] = 'Schliessen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] = 'Teilen';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] = 'Drucken';
+$GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['back'] = 'Zurück';
 
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['online'] = 'Online bewerben';
 $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['onlineText'] = 'Du bist von uns überzeugt? Gleich hier alle Daten eingeben und Bewerbung abschicken.';
