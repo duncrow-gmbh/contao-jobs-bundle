@@ -8,6 +8,8 @@ $GLOBALS['TL_LANG']['tl_job']['alias'] = array('Alias', 'Der Jobalias ist eine e
 $GLOBALS['TL_LANG']['tl_job']['language'] = array('Sprache', 'Bitte wählen Sie die Sprache des Jobs aus.');
 $GLOBALS['TL_LANG']['tl_job']['linkedJobs'] = array('Verlinkte Jobs', 'Bitte wählen Sie die verlinkten Jobs aus (andere Sprachen).');
 $GLOBALS['TL_LANG']['tl_job']['tags'] = array('Kategorie(n)', 'Bitte wählen Sie die Kategorie(n) des Jobs aus oder geben Sie eine Neue ein.');
+$GLOBALS['TL_LANG']['tl_job']['employmentType'] = array('Anstellungsart', 'Bitte wählen Sie die Art des Anstellungsverhätnisses aus.');
+$GLOBALS['TL_LANG']['tl_job']['employmentType']['options'] = array('FULL_TIME' => 'Vollzeit', 'PART_TIME' => 'Teilzeit', 'INTERN' => 'Praktikum', 'TEMPORARY' => 'Vorübergehend', 'CONTRACTOR' => 'Auftragsbasis', 'OTHER' => 'Andere');
 $GLOBALS['TL_LANG']['tl_job']['description'] = array('Beschreibung', 'Bitte wählen Sie die Beschreibung des Jobs ein.');
 
 $GLOBALS['TL_LANG']['tl_job']['metaTitle'] = array('Metatitel', 'Bitte geben Sie den Metatitel des Jobs ein.');

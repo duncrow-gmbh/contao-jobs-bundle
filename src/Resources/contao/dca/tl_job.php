@@ -113,7 +113,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,tags,description;
+			{general_legend},title,alias,language,linkedJobs,tags,employmentType,description;
 			{meta_legend},metaTitle,metaDescription;
 		    {publish_legend},published,featured,start,stop
 		'
@@ -191,6 +191,16 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'hideList' => true, // Hide the list of tags; the input field will be still visible
                 'tl_class' => 'w50'
             )
+        ),
+        'employmentType' => array(
+            'inputType' => 'select',
+            'options' => $GLOBALS['TL_LANG']['tl_job']['employmentType']['options'],
+            'eval' => array(
+                'mandatory' => false,
+                'tl_class' => 'w50',
+                'chosen' => true
+            ),
+            'sql' => "varchar(255) NOT NULL default ''"
         ),
         'description' => array
         (
