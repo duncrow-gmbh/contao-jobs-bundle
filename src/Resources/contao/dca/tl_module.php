@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,job_order,job_showFilter;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,job_order,showBackButton;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{config_legend},jumpToApplication;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
@@ -60,6 +60,11 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_fixed'] = array
     'sql' => "char(1) NOT NULL default '1'",
 );
 
+$GLOBALS['TL_DCA']['tl_module']['fields']['showBackButton'] = array(
+    'inputType' => 'checkbox',
+    'eval' => array('tl_class' => 'clr w50', 'submitOnChange' => true),
+    'sql' => "char(1) NOT NULL default '1'"
+);
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_application_online'] = array(
     'inputType' => 'checkbox',
     'eval' => array('tl_class' => 'clr w50', 'submitOnChange' => true),

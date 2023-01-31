@@ -9,6 +9,8 @@ $GLOBALS['TL_LANG']['tl_module']['online_legend'] = 'Bewerbungsmöglichkeit - On
 $GLOBALS['TL_LANG']['tl_module']['telephone_legend'] = 'Bewerbungsmöglichkeit - Rückruf anfordern';
 $GLOBALS['TL_LANG']['tl_module']['meeting_legend'] = 'Bewerbungsmöglichkeit - Termin vereinbaren';
 
+$GLOBALS['TL_LANG']['tl_module']['showBackButton'] = array('"Zurück"-Button anzeigen', 'Bitte wählen Sie, ob der "Zurück"-Button angezeigt werden soll.');
+
 $GLOBALS['TL_LANG']['tl_module']['jumpToReader'] = array('Weiterleitungsseite - Jobleser', 'Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken des Links "Mehr Infos" weitergeleitet wird.');
 $GLOBALS['TL_LANG']['tl_module']['jumpToApplication'] = array('Weiterleitungsseite - Bewerbung', 'Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken des Links "Auswählen und weiter" weitergeleitet wird.');
 

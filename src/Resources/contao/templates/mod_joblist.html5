@@ -7,6 +7,10 @@
 </div>
 
 <?php $this->loadLanguageFile('tl_job'); ?>
-<button class="btn btn-secondary text-uppercase mt-4" onclick="history.back()"><span class="me-2">{{far::chevron-left}}</span><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['back'] ?></button>
+
+<?php if ($this->showBackButton): ?>
+    <button class="btn btn-secondary text-uppercase mt-4" onclick="history.back()"><span class="me-2">{{far::chevron-left}}</span><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['back'] ?>
+    </button>
+<?php endif; ?>
 
 <?php $this->endblock(); ?>
