@@ -34,11 +34,6 @@ $GLOBALS['TL_DCA'][$strName] = array
         (
             'inputType'               => 'textarea',
             'eval'                    => array('style'=>'height:120px', 'preserveTags'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'tl_class'=>'clr'),
-        ),
-        'contaojobsbundle_structuredData_jobLocation' => array
-        (
-            'inputType'               => 'textarea',
-            'eval'                    => array('style'=>'height:120px', 'preserveTags'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'tl_class'=>'clr'),
         )
     )
 );

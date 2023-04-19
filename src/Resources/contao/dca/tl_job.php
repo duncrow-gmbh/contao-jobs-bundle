@@ -4,6 +4,8 @@ use Contao\DataContainer;
 use Contao\Image;
 use Contao\StringUtil;
 use Contao\System;
+use Contao\DC_Table;
+use Duncrow\JobsBundle\Model\JobLocationModel;
 use Duncrow\JobsBundle\Model\JobModel;
 
 $strName = 'tl_job';
@@ -19,7 +21,8 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Config
     'config' => array
     (
-        'dataContainer' => 'Table',
+        'dataContainer' => DC_Table::class,
+        'ptable' => 'tl_job_archive',
         'ctable' => array('tl_content'),
         'switchToEdit' => true,
         'enableVersioning' => true,
@@ -39,9 +42,9 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         'sorting' => array
         (
-            'mode' => 1,
-            'flag' => 1,
-            'fields' => array('title'),
+            'mode' => DataContainer::MODE_PARENT,
+            'fields' => array('sorting'),
+            'headerFields' => array('title'),
             'panelLayout' => 'filter;search'
         ),
         'label' => array
@@ -57,10 +60,6 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'href' => 'act=select',
                 'class' => 'header_edit_all',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
-            ),
-            'settings' => array(
-                'href' => 'table=tl_job_settings',
-                'class' => 'header_icon job_settings',
             )
         ),
         'operations' => array
@@ -99,11 +98,6 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'icon' => 'featured.svg',
                 'button_callback' => array('tl_job', 'featureIcon'),
                 'showInHeader' => true
-            ),
-            'show' => array
-            (
-                'href' => 'act=show',
-                'icon' => 'show.gif'
             )
         )
     ),
@@ -113,7 +107,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,tags,employmentType,description;
+			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,description;
 			{meta_legend},metaTitle,metaDescription;
 		    {publish_legend},published,featured,start,stop
 		'
@@ -133,7 +127,9 @@ $GLOBALS['TL_DCA'][$strName] = array
         ),
         'pid' => array
         (
-            'sql' => "int(10) unsigned NOT NULL default '0'"
+            'foreignKey' => 'tl_job_archive.title',
+            'sql' => "int(10) unsigned NOT NULL default 0",
+            'relation' => array('type'=>'belongsTo', 'load'=>'lazy')
         ),
         'sorting' => array
         (
@@ -180,27 +176,36 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval' => array('mandatory' => false, 'multiple' => true, 'chosen' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'),
             'sql' => "varchar(255) NOT NULL default ''"
         ),
-        'tags' => array(
-            'exclude' => true,
-            'inputType' => 'cfgTags',
-            'eval' => array(
-                'tagsManager' => 'contao_jobs_bundle', // Manager name, required
-                'tagsCreate' => true, // Allow to create tags, optional (true by default)
-                'tagsSource' => 'tl_job.tags', // Tag source, optional (defaults to current table and current field)
-                'maxItems' => 10, // Maximum number of tags allowed
-                'hideList' => true, // Hide the list of tags; the input field will be still visible
-                'tl_class' => 'w50'
-            )
-        ),
         'employmentType' => array(
             'inputType' => 'select',
             'options' => $GLOBALS['TL_LANG']['tl_job']['employmentType']['options'],
             'eval' => array(
                 'mandatory' => false,
                 'tl_class' => 'w50',
+                'chosen' => true,
+                'multiple' => true
+            ),
+            'sql' => "text NULL"
+        ),
+        'location' => array(
+            'inputType' => 'select',
+            'options_callback' => array('tl_job', 'getLocationOptions'),
+            'eval' => array(
+                'mandatory' => false,
+                'includeBlankOption' => true,
+                'tl_class' => 'w50',
                 'chosen' => true
             ),
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => "text NULL"
+        ),
+        'salary' => array(
+            'inputType' => 'text',
+            'eval' => array(
+                'rgxp' => 'natural',
+                'mandatory' => false,
+                'tl_class' => 'w50'
+            ),
+            'sql' => 'int(10) default NULL'
         ),
         'description' => array
         (
@@ -345,5 +350,17 @@ class tl_job extends Contao\Backend
         }
 
         return $return;
+    }
+
+    public function getLocationOptions(DataContainer $dc): array
+    {
+        $arrLocations = array();
+        $objLocations = JobLocationModel::findAll();
+
+        while ($objLocations->next()) {
+            $arrLocations[$objLocations->id] = "$objLocations->street <span class='tl_gray'>[$objLocations->postal $objLocations->city]</span>";
+        }
+
+        return $arrLocations;
     }
 }

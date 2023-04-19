@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,job_order,showBackButton;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},job_archives,jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,showBackButton;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{config_legend},jumpToApplication;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
@@ -182,6 +182,15 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['jumpToMeeting'] = array(
     'relation' => array('type' => 'hasOne', 'load' => 'lazy')
 );
 
+$GLOBALS['TL_DCA']['tl_module']['fields']['job_archives'] = array
+(
+    'exclude' => true,
+    'inputType' => 'checkboxWizard',
+    'options_callback' => array('tl_module_jobs', 'getJobArchives'),
+    'eval' => array('multiple' => true, 'mandatory' => true),
+    'sql' => "blob NULL"
+);
+
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_language'] = array(
     'exclude' => true,
     'inputType' => 'select',
@@ -197,14 +206,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_featured'] = array(
     'eval' => array('tl_class' => 'w50 clr'),
     'sql' => "varchar(16) NOT NULL default 'all_items'"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['job_order'] = array(
-    'exclude' => true,
-    'inputType' => 'select',
-    'options_callback' => array('tl_module_job', 'getSortingOptions'),
-    'reference' => &$GLOBALS['TL_LANG']['tl_module'],
-    'eval' => array('tl_class' => 'w50'),
-    'sql' => "varchar(32) NOT NULL default 'order_date_desc'"
-);
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_template'] = array(
     'exclude' => true,
     'inputType' => 'select',
@@ -215,17 +216,17 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_template'] = array(
     'sql' => "varchar(64) NOT NULL default ''"
 );
 
-class tl_module_job extends Contao\Backend
+class tl_module_jobs extends Contao\Backend
 {
-    /**
-     * Return the sorting options
-     *
-     * @param Contao\DataContainer $dc
-     *
-     * @return array
-     */
-    public function getSortingOptions(Contao\DataContainer $dc): array
+    public function getJobArchives(): array
     {
-        return array('job_order_tstamp_asc', 'job_order_tstamp_desc', 'job_order_title_asc', 'job_order_title_desc', 'job_order_random');
+        $arrArchives = array();
+        $objArchives = $this->Database->execute("SELECT id, title FROM tl_job_archive ORDER BY title");
+
+        while ($objArchives->next()) {
+            $arrArchives[$objArchives->id] = $objArchives->title;
+        }
+
+        return $arrArchives;
     }
 }
