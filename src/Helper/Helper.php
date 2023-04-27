@@ -17,7 +17,7 @@ class Helper {
 
     public static function getStructuredDataForLocation($locationId): string
     {
-        $objJobLocation = JobLocationModel::findByIdOrAlias($locationId);
+        $objJobLocation = JobLocationModel::findBy("id", $locationId);
 
         return sprintf(
             '"@type": "Place", "address": { "@type": "PostalAddress", "streetAddress": "%s", "addressLocality": "%s", "addressRegion": "%s", "postalCode": "%s", "addressCountry": "%s" }',

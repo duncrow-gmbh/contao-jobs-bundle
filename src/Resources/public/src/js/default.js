@@ -30,6 +30,23 @@ $(function () {
         });
     });
 
+    const $shareButton = $jobShort.find('.actions > .share-job');
+    $shareButton.on('click', function (e) {
+        e.preventDefault();
+
+        const $btn = $(this);
+
+        let href = window.location.origin + '/' + $(this).attr('href');
+        let html = $(this).html();
+
+        navigator.clipboard.writeText(href).then(() => {
+            $btn.html('<span><span class="test">Link kopiert</span><span class="ms-2"><i class="far fa-check fa-fw" aria-hidden="true"></i></span></span>');
+
+            setTimeout(function () {
+                $btn.html(html);
+            }, 3000);
+        });
+    });
 
     const $jobApplicationBanner = $body.find('.mod_jobapplicationbanner');
     $jobApplicationBanner.each(function () {
