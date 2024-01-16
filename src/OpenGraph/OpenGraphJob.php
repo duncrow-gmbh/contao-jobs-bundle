@@ -33,10 +33,10 @@ class OpenGraphJob
 
         $objPage = System::getContainer()->get('request_stack')->getCurrentRequest()->get('pageModel');
 
-        if($objJob->metaTitle)
+        if(isset($objJob->metaTitle) && $objJob->metaTitle)
             $objPage->pageTitle = $objJob->metaTitle;
 
-        if($objJob->metaDescription)
+        if(isset($objJob->metaDescription) && $objJob->metaDescription)
             $objPage->description = $objJob->metaDescription;
 
         OpenGraph3::addTagsToPage($objJob);

@@ -83,7 +83,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'href' => 'act=delete',
                 'icon' => 'delete.gif',
-                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes' => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm']??'') . '\'))return false;Backend.getScrollOffset()"'
             ),
             'toggle' => array
             (
@@ -178,7 +178,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ),
         'employmentType' => array(
             'inputType' => 'select',
-            'options' => $GLOBALS['TL_LANG']['tl_job']['employmentType']['options'],
+            'options' => ($GLOBALS['TL_LANG']['tl_job']['employmentType']['options'] ?? []),
             'eval' => array(
                 'mandatory' => false,
                 'tl_class' => 'w50',
@@ -357,8 +357,10 @@ class tl_job extends Contao\Backend
         $arrLocations = array();
         $objLocations = JobLocationModel::findAll();
 
-        while ($objLocations->next()) {
-            $arrLocations[$objLocations->id] = "$objLocations->street <span class='tl_gray'>[$objLocations->postal $objLocations->city]</span>";
+        if($objLocations){
+            while ($objLocations->next()) {
+                $arrLocations[$objLocations->id] = "$objLocations->street <span class='tl_gray'>[$objLocations->postal $objLocations->city]</span>";
+            }
         }
 
         return $arrLocations;
