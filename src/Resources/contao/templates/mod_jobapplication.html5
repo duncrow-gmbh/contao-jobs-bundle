@@ -75,8 +75,8 @@
             "title": "<?= $this->job->title ?>",
             "description": "<?= $this->job->description ?>",
             "datePosted": "<?= date('Y-m-d', $this->job->tstamp) ?>",
-            "hiringOrganization": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?>},
-            "jobLocation": {<?= $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?>}
+            "hiringOrganization": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>},
+            "jobLocation": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?? '') ?>}
         }
 </script>
 

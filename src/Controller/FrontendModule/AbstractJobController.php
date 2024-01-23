@@ -22,7 +22,7 @@ abstract class AbstractJobController extends AbstractFrontendModuleController
         while ($objItems->next())
         {
             $objItem = $objItems->current();
-            $arrItems[] = $this->parseItem($objItem, $jumpToReader, $jumpToApplication, $template);
+            $arrItems[] = $this->parseItem($objItem, $jumpToReader, $jumpToApplication, (($template)?$template:'job_short'));
         }
 
         return $arrItems;
@@ -30,6 +30,7 @@ abstract class AbstractJobController extends AbstractFrontendModuleController
 
     protected function parseItem($objItem, $jumpToReader = null, $jumpToApplication = null, $template = 'job_full')
     {
+        $template = (($template)?$template:'job_full'); 
         if($jumpToReader) {
             $objDetailLink = PageModel::findWithDetails($jumpToReader);
             $objItem->href = $objDetailLink->getFrontendUrl('/' . $objItem->alias);
