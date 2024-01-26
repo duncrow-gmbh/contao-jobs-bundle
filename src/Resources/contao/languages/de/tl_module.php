@@ -16,7 +16,11 @@ $GLOBALS['TL_LANG']['tl_module']['jumpToApplication'] = array('Weiterleitungssei
 
 $GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_image'] = array('Banner-Bild', 'Hier können Sie ein Bild auswählen, welches im Banner dargestellt wird.');
 $GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_linkTitle'] = array('Link-Titel', 'Bitte geben Sie den Link-Titel für den Link zur Joblisten-Seite ein.');
+$GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_linkSymbol'] = array('Link Symbol', 'Symbol Klasse von fontawsome');
 $GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_fixed'] = array('Banner fixiert', 'Bitte wählen Sie ob der Jobbewerbung-Banner am Seitenende fixiert dargestellt werden soll.');
+$GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_text'] = array('Banner Text', 'Text');
+$GLOBALS['TL_LANG']['tl_module']['job_applicationBanner_symbolclass'] = array('Banner Symbol', 'Symbol Klasse von fontawsome');
+
 
 
 $GLOBALS['TL_LANG']['tl_module']['job_application_online'] = array('Aktivieren', 'Bitte wählen Sie ob die Bewerbungsmöglichkeit "Online bewerben" möglich sein soll.');

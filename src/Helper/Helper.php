@@ -18,14 +18,19 @@ class Helper {
     public static function getStructuredDataForLocation($locationId): string
     {
         $objJobLocation = JobLocationModel::findBy("id", $locationId);
+        if($objJobLocation){
+            return sprintf(
+                '"@type": "Place", "address": { "@type": "PostalAddress", "streetAddress": "%s", "addressLocality": "%s", "addressRegion": "%s", "postalCode": "%s", "addressCountry": "%s" }',
+                ($objJobLocation->street??''),
+                ($objJobLocation->city??''),
+                ($objJobLocation->region??''),
+                ($objJobLocation->postal??''),
+                ($objJobLocation->country? strtoupper($objJobLocation->country):'')
+            );
+        }else{
+            return ''; 
+        }
 
-        return sprintf(
-            '"@type": "Place", "address": { "@type": "PostalAddress", "streetAddress": "%s", "addressLocality": "%s", "addressRegion": "%s", "postalCode": "%s", "addressCountry": "%s" }',
-            $objJobLocation->street,
-            $objJobLocation->city,
-            $objJobLocation->region,
-            $objJobLocation->postal,
-            strtoupper($objJobLocation->country)
-        );
+        
     }
 }

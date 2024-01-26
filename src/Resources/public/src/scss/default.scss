@@ -165,6 +165,22 @@ body {
       display: flex;
       justify-content: space-between;
       text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      align-items: center; 
+      
+      .jobbanner-left-side, .jobbanner-right-side{
+        *{
+          display: inline-block;
+        }
+      }
+      .jobbanner-left-side{
+        .jobbanner-symbol{
+          padding-left: .5rem;
+          font-size: 2rem;
+          vertical-align: sub;
+        }
+      }
 
       > .image {
         padding: .5rem 0;

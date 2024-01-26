@@ -6,11 +6,40 @@
 
 <div class="container">
     <div class="inner">
-        <div class="image">
+        <div class="jobbanner-left-side">
+        <?php if($this->job_applicationBanner_text){ ?>
+            <div class="jobbanner-text">
+                <?= $this->job_applicationBanner_text; ?>
+            </div>
+        <?php } ?>
             <?php $image = \Contao\FilesModel::findByUuid($this->image); ?>
-            {{image::<?= $image->path ?>?height=75}}
+            <?php if($image){ ?>
+                <div class="image">
+                    {{image::<?= $image->path ?>?height=75}}
+                </div>
+            <?php } ?>
+            <?php if($this->job_applicationBanner_symbolclass){ ?>
+                <div class="jobbanner-symbol">
+                <i class="<?= $this->job_applicationBanner_symbolclass; ?>"></i>
+                </div>
+            <?php } ?>
         </div>
-        <a href="<?= $this->href ?>" class="btn btn-primary btn-lg"><?php if($this->job_applicationBanner_linkTitle): ?><?= $this->job_applicationBanner_linkTitle ?><?php else: ?><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] ?><?php endif; ?></a>
+        <div class="jobbanner-right-side">
+            <a href="<?= $this->href ?>" class="btn btn-primary btn-lg">
+                <?php if($this->job_applicationBanner_linkSymbol){ ?>
+                    <div class="jobbanner-link-symbol">
+                    <i class="<?= $this->job_applicationBanner_linkSymbol; ?>"></i>
+                    </div>
+                <?php } ?>
+                <span>
+                <?php if($this->job_applicationBanner_linkTitle): ?>
+                    <?= $this->job_applicationBanner_linkTitle ?>
+                <?php else: ?>
+                    <?= ($GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] ?? 'Bewerben') ?>
+                <?php endif; ?>
+                </span>
+            </a>
+        </div>
     </div>
 </div>
 

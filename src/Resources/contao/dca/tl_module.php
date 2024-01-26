@@ -18,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_module']['subpalettes'] = array_merge(
     )
 );
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['jobapplicationbanner'] = '{title_legend},name,type;{config_legend},jumpTo,job_applicationBanner_image,job_applicationBanner_linkTitle,job_applicationBanner_fixed;{template_legend:hide},customTpl;{expert_legend},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['jobapplicationbanner'] = '{title_legend},name,type;{config_legend},jumpTo,job_applicationBanner_image,job_applicationBanner_symbolclass,job_applicationBanner_text,job_applicationBanner_linkSymbol,job_applicationBanner_linkTitle,job_applicationBanner_fixed;{template_legend:hide},customTpl;{expert_legend},guests,cssID';
 
 $this->loadDataContainer('tl_content');
 $this->loadLanguageFile('tl_job');
@@ -47,6 +47,25 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_image'] = array
     'inputType' => 'fileTree',
     'eval' => array('fieldType' => 'radio', 'filesOnly' => true, 'extensions' => Contao\Config::get('validImageTypes'), 'mandatory' => false, 'tl_class' => 'clr w50'),
     'sql' => "binary(16) NULL"
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_symbolclass'] = array(
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => array('tl_class' => 'w50', 'mandatory' => false),
+    'sql' => "varchar(255) NOT NULL default ''",
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_linkSymbol'] = array(
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => array('tl_class' => 'w50', 'mandatory' => false),
+    'sql' => "varchar(255) NOT NULL default ''",
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_text'] = array(
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => array('tl_class' => 'w50', 'mandatory' => false),
+    'sql' => "varchar(255) NOT NULL default ''",
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_applicationBanner_linkTitle'] = array(
     'exclude' => true,
