@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,description;
+			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,validThrough,description;
 			{meta_legend},metaTitle,metaDescription;
 		    {publish_legend},published,featured,start,stop
 		'
@@ -229,7 +229,12 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval' => array('mandatory' => false, 'tl_class' => 'w50'),
             'sql' => "text NULL"
         ),
-
+        'validThrough' => array
+		(
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory' => true,'rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "varchar(10) NOT NULL default ''"
+		),
         'published' => array
         (
             'exclude' => true,

@@ -1,34 +1,76 @@
 <?php use Duncrow\JobsBundle\Helper\Helper;
 
 $this->loadLanguageFile('tl_job'); ?>
-
-<div class="job_full <?= $this->class ?>">
+<div class="container">
     <div class="inner">
-        <?= implode('', $this->elements) ?>
+        <div class="job_full <?= $this->class ?>">
+            <div class="inner">
+                <?= implode('', $this->elements) ?>
+            </div>
+
+            <!-- <a href="<?= $this->hrefApplication ?>" class="mt-3 btn btn-primary text-uppercase"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] ?><span class="ms-2">{{far::user-plus fw}}</span></a> -->
+
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org/",
+                    "@type": "JobPosting",
+                    "title": "<?= $this->title ?>",
+                    "description": "<?= $this->description ?>",
+                    "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
+                    "hiringOrganization": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>},
+                    <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
+                            "employmentType": [<?= $employmentType ?>],
+                    <?php endif; ?>
+                    <?php if($this->salary): ?>
+                        "baseSalary": {
+                            "@type": "MonetaryAmount",
+                            "value": "<?= $this->salary ?>"
+                        },
+                    <?php endif; ?>
+                    <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
+                            "jobLocation": {<?= $jobLocation ?>},
+                    <?php endif; ?>
+                    <?php if($this->job->Abgelaufene){ ?> 
+                    "validThrough" : "<?= date('Y-m-d', $this->job->Abgelaufene) ?>"
+                    <?php } ?>
+                }
+            </script>
+        </div>
+
+
+        <div class="mod_jobapplicationbanner fixed block">
+            <div class="container">
+                <div class="inner">
+                    <div class="jobbanner-left-side">
+                        <!-- <a href="<?= $this->href ?>" class="btn btn-black share-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?></span><span class="ms-2">{{far::share-nodes fw}}</span></a> -->
+                        <a href="<?= "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>?action=print" class="btn btn-black print-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?></span><span class="ms-2">{{far::print fw}}</span></a>
+                        
+                    </div>
+                    <div class="jobbanner-right-side">
+                        <a href="<?= $this->hrefApplication ?>" class="btn btn-primary btn-lg">
+                            <?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] ?>
+                            <span class="ms-2">{{far::user-plus fw}}</span>
+                        </a>
+
+            <?php /*
+                        <a href="<?= $this->href ?>" class="btn btn-primary btn-lg">
+                            <?php if($this->job_applicationBanner_linkSymbol){ ?>
+                                <div class="jobbanner-link-symbol">
+                                <i class="<?= $this->job_applicationBanner_linkSymbol; ?>"></i>
+                                </div>
+                            <?php } ?>
+                            <span>
+                            <?php if($this->job_applicationBanner_linkTitle): ?>
+                                <?= $this->job_applicationBanner_linkTitle ?>
+                            <?php else: ?>
+                                <?= ($GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] ?? 'Bewerben') ?>
+                            <?php endif; ?>
+                            </span>
+                        </a>
+                        */ ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <a href="<?= $this->hrefApplication ?>" class="mt-3 btn btn-primary text-uppercase"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] ?><span class="ms-2">{{far::user-plus fw}}</span></a>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org/",
-            "@type": "JobPosting",
-            "title": "<?= $this->title ?>",
-            "description": "<?= $this->description ?>",
-            "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
-            "hiringOrganization": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>},
-            <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
-                    "employmentType": [<?= $employmentType ?>],
-            <?php endif; ?>
-            <?php if($this->salary): ?>
-                "baseSalary": {
-                    "@type": "MonetaryAmount",
-                    "value": "<?= $this->salary ?>"
-                },
-            <?php endif; ?>
-            <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
-                    "jobLocation": {<?= $jobLocation ?>}
-            <?php endif; ?>
-        }
-    </script>
 </div>

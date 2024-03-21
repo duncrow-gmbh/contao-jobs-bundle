@@ -1,8 +1,4 @@
-body {
-  &.job-overlay-open {
-    overflow-y: hidden;
-  }
-}
+
 
 .mod_joblist {
   .job_short {
@@ -14,89 +10,6 @@ body {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
-      }
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 10000;
-      background: transparentize(#000000, .25);
-      opacity: 0;
-      pointer-events: none;
-      transition: .33s ease-in-out;
-
-      &.open {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      > .inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-        width: 95%;
-        height: 95%;
-        background: #FFFFFF;
-        display: flex;
-
-        @media (max-width: 991px) {
-          flex-flow: column;
-        }
-
-        > .actions {
-          padding: 1.5rem;
-          display: flex;
-          flex-flow: column;
-          justify-content: flex-start;
-
-          @media print {
-            display: none;
-          }
-
-          button, a {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            text-transform: uppercase;
-            text-align: left;
-          }
-
-          > .bottom {
-            margin-top: auto;
-          }
-
-          @media (max-width: 991px) {
-            flex-flow: row wrap;
-
-            > button, > a {
-              width: auto;
-
-              > .text {
-                display: none;
-              }
-
-              > .ms-2 {
-                margin: 0 !important;
-              }
-            }
-          }
-        }
-
-        > .content {
-          padding: 1.5rem;
-          height: 100%;
-          flex: 1;
-          overflow-y: auto;
-
-          > iframe {
-            height: 100%;
-          }
-        }
       }
     }
   }

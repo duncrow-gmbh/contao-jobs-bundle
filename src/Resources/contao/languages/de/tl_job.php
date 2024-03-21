@@ -9,6 +9,8 @@ $GLOBALS['TL_LANG']['tl_job']['employmentType'] = array('Anstellungsart', 'Bitte
 $GLOBALS['TL_LANG']['tl_job']['employmentType']['options'] = array('FULL_TIME' => 'Vollzeit', 'PART_TIME' => 'Teilzeit', 'INTERN' => 'Praktikum', 'TEMPORARY' => 'Vorübergehend', 'CONTRACTOR' => 'Auftragsbasis', 'OTHER' => 'Andere');
 $GLOBALS['TL_LANG']['tl_job']['location'] = array('Standort', 'Bitte wählen Sie den Standort des Jobs aus.');
 $GLOBALS['TL_LANG']['tl_job']['salary'] = array('Gehalt', 'Bitte geben Sie den Gehalt des Jobs ein.');
+$GLOBALS['TL_LANG']['tl_job']['validThrough'] = array('Stellenausschreibungen Ablaufdatum', 'Beim entfernen eines Jobs muss das Ablaufdatum in der Vergangenheit liegen');
+
 $GLOBALS['TL_LANG']['tl_job']['description'] = array('Beschreibung', 'Bitte wählen Sie die Beschreibung des Jobs ein.');
 
 $GLOBALS['TL_LANG']['tl_job']['metaTitle'] = array('Metatitel', 'Bitte geben Sie den Metatitel des Jobs ein.');
