@@ -17,21 +17,24 @@ $this->loadLanguageFile('tl_job'); ?>
                     "title": "<?= $this->title ?>",
                     "description": "<?= $this->description ?>",
                     "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
-                    "hiringOrganization": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>},
+                    "hiringOrganization": {
+                        "@type" : "Organization",
+                        "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
+                    }
                     <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
-                            "employmentType": [<?= $employmentType ?>],
+                            ,"employmentType": <?= $employmentType ?>
                     <?php endif; ?>
                     <?php if($this->salary): ?>
-                        "baseSalary": {
+                        ,"baseSalary": {
                             "@type": "MonetaryAmount",
                             "value": "<?= $this->salary ?>"
-                        },
+                        }
                     <?php endif; ?>
                     <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
-                            "jobLocation": {<?= $jobLocation ?>},
+                            ,"jobLocation": {<?= $jobLocation ?>}
                     <?php endif; ?>
-                    <?php if($this->job->Abgelaufene){ ?> 
-                    "validThrough" : "<?= date('Y-m-d', $this->job->Abgelaufene) ?>"
+                    <?php if($this->validThrough){ ?> 
+                    ,"validThrough" : "<?= date('Y-m-d', $this->validThrough) ?>"
                     <?php } ?>
                 }
             </script>
