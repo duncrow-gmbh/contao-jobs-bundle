@@ -44,8 +44,8 @@ $this->loadLanguageFile('tl_job'); ?>
         <div class="mod_jobapplicationbanner fixed block">
             <div class="container">
                 <div class="inner">
-                    <div class="jobbanner-left-side">
-                        <!-- <a href="<?= $this->href ?>" class="btn btn-black share-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?></span><span class="ms-2">{{far::share-nodes fw}}</span></a> -->
+                    <div class="jobbanner-left-side actions job-actions">
+                        <a href="<?= "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" class="btn btn-black share-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['share'] ?></span><span class="ms-2">{{far::share-nodes fw}}</span></a>
                         <a href="<?= "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>?action=print" class="btn btn-black print-job" target="_blank"><span class="text"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['print'] ?></span><span class="ms-2">{{far::print fw}}</span></a>
                         
                     </div>

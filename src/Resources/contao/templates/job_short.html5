@@ -5,7 +5,7 @@
         <h4><?= $this->title ?></h4>
         <div class="description"><?= $this->description ?></div>
         <div class="links">
-            <a class="btn btn-secondary" href="<?= $this->href ?>"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] ?><span class="ms-2">{{far::info-circle}}</span></a>
+            <a class="btn btn-secondary" href="<?= $this->href ?>" target="_blank"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['more'] ?><span class="ms-2">{{far::info-circle}}</span></a>
         </div>
     </div>
     <script type="application/ld+json">
