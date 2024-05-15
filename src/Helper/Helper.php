@@ -10,9 +10,14 @@ class Helper {
     {
         $employmentType = unserialize($employmentType);
 
-        return implode(',', array_map(function($a) {
-            return '"'.$a.'"';
-        }, $employmentType));
+        if(is_array($employmentType)){
+            return implode(',', array_map(function($a) {
+                return '"'.$a.'"';
+            }, $employmentType));
+        }else{
+            return ""; 
+        }
+        
     }
 
     public static function getStructuredDataForLocation($locationId): string

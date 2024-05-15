@@ -8,8 +8,6 @@ $this->loadLanguageFile('tl_job'); ?>
                 <?= implode('', $this->elements) ?>
             </div>
 
-            <!-- <a href="<?= $this->hrefApplication ?>" class="mt-3 btn btn-primary text-uppercase"><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] ?><span class="ms-2">{{far::user-plus fw}}</span></a> -->
-
             <script type="application/ld+json">
                 {
                     "@context": "https://schema.org/",
@@ -54,23 +52,6 @@ $this->loadLanguageFile('tl_job'); ?>
                             <?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['applyNow'] ?>
                             <span class="ms-2">{{far::user-plus fw}}</span>
                         </a>
-
-            <?php /*
-                        <a href="<?= $this->href ?>" class="btn btn-primary btn-lg">
-                            <?php if($this->job_applicationBanner_linkSymbol){ ?>
-                                <div class="jobbanner-link-symbol">
-                                <i class="<?= $this->job_applicationBanner_linkSymbol; ?>"></i>
-                                </div>
-                            <?php } ?>
-                            <span>
-                            <?php if($this->job_applicationBanner_linkTitle): ?>
-                                <?= $this->job_applicationBanner_linkTitle ?>
-                            <?php else: ?>
-                                <?= ($GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['toJobSite'] ?? 'Bewerben') ?>
-                            <?php endif; ?>
-                            </span>
-                        </a>
-                        */ ?>
                     </div>
                 </div>
             </div>
