@@ -1,6 +1,6 @@
 {
   "name": "duncrow-gmbh/contao-jobs-bundle",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "type": "contao-bundle",
   "license": "LGPL-3.0-or-later",
   "require": {
