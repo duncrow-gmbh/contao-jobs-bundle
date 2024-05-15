@@ -2,7 +2,7 @@
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['joblist'] = '{title_legend},name,type;{config_legend},job_archives,jumpToReader,jumpToApplication,numberOfItems,job_language,job_featured,showBackButton;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{config_legend},jumpToApplication;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['jobreader'] = '{title_legend},name,type;{config_legend},jumpToApplication,job_single_option;{template_legend:hide},job_template,customTpl;{expert_legend},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobapplication'] = '{title_legend},name,type;{online_legend:hide},job_application_online;{telephone_legend:hide},job_application_telephone;{meeting_legend:hide},job_application_meeting;{template_legend:hide},customTpl;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'] = array_merge(
@@ -215,6 +215,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_language'] = array(
     'inputType' => 'select',
     'options' => array('de' => 'Deutsch', 'en' => 'English'),
     'eval' => array('mandatory' => true, 'tl_class' => 'w50'),
+    'sql' => "varchar(16) NOT NULL default ''"
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['job_single_option'] = array(
+    'exclude' => true,
+    'inputType' => 'select',
+    'options' => array('online' => 'Online (= redirect to formular)', 'telephone' => 'Telephone', 'meeting'=>'Meeting'),
+    'eval' => array('mandatory' => true, 'tl_class' => 'w50', 'includeBlankOption'=>true,'blankOptionLabel'=>'unset (show all options)'),
     'sql' => "varchar(16) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_featured'] = array(

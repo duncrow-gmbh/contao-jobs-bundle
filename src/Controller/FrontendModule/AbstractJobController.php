@@ -28,7 +28,7 @@ abstract class AbstractJobController extends AbstractFrontendModuleController
         return $arrItems;
     }
 
-    protected function parseItem($objItem, $jumpToReader = null, $jumpToApplication = null, $template = 'job_full')
+    protected function parseItem($objItem, $jumpToReader = null, $jumpToApplication = null, $template = 'job_full', $option = '')
     {
         $template = (($template)?$template:'job_full'); 
         if($jumpToReader) {
@@ -38,7 +38,7 @@ abstract class AbstractJobController extends AbstractFrontendModuleController
 
         if($jumpToApplication) {
             $objDetailLink = PageModel::findWithDetails($jumpToApplication);
-            $objItem->hrefApplication = $objDetailLink->getFrontendUrl('/' . $objItem->alias);
+            $objItem->hrefApplication = $objDetailLink->getFrontendUrl('/' . $objItem->alias).(($option)?'?type='.$option:'');
         }
 
         $arrElements = array();
