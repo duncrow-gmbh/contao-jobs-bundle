@@ -15,7 +15,14 @@
             "title": "<?= $this->title ?>",
             "description": "<?= $this->description ?>",
             "datePosted": "<?= date('Y-m-d', $this->tstamp) ?>",
-            "hiringOrganization": {<?=( $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>},
+            "hiringOrganization": {
+                <?php if(isset($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']) && strpos($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'], '"')!==false){
+                            echo $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']; 
+                        }else { ?>
+                            "@type" : "Organization",
+                            "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
+                        <?php }?>
+            },
             "jobLocation": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation']??'') ?>}
         }
     </script>
