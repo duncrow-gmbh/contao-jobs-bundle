@@ -1,4 +1,5 @@
-<?php $this->loadLanguageFile('tl_job'); ?>
+<?php use Duncrow\JobsBundle\Helper\Helper;
+$this->loadLanguageFile('tl_job'); ?>
 
 <div class="job_short <?= $this->class ?>" id="job_<?= $this->id ?>">
     <div class="inner">
@@ -22,8 +23,22 @@
                             "@type" : "Organization",
                             "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
                         <?php }?>
-            },
-            "jobLocation": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation']??'') ?>}
+            }
+            <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
+                            ,"employmentType": <?= $employmentType ?>
+                    <?php endif; ?>
+                    <?php if($this->salary): ?>
+                        ,"baseSalary": {
+                            "@type": "MonetaryAmount",
+                            "value": "<?= $this->salary ?>"
+                        }
+                    <?php endif; ?>
+                    <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
+                            ,"jobLocation": {<?= $jobLocation ?>}
+                    <?php endif; ?>
+                    <?php if($this->validThrough){ ?> 
+                    ,"validThrough" : "<?= date('Y-m-d', $this->validThrough) ?>"
+                    <?php } ?>
         }
     </script>
 </div>

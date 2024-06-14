@@ -1,4 +1,5 @@
-<?php $this->extend('block_unsearchable'); ?>
+<?php use Duncrow\JobsBundle\Helper\Helper;
+ $this->extend('block_unsearchable'); ?>
 
 <?php $this->block('content'); ?>
 
@@ -82,8 +83,21 @@
                             "@type" : "Organization",
                             "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
                         <?php }?>
-            },
-            "jobLocation": {<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_jobLocation'] ?? '') ?>},
+            }<?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
+                            ,"employmentType": <?= $employmentType ?>
+                    <?php endif; ?>
+                    <?php if($this->salary): ?>
+                        ,"baseSalary": {
+                            "@type": "MonetaryAmount",
+                            "value": "<?= $this->salary ?>"
+                        }
+                    <?php endif; ?>
+                    <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
+                            ,"jobLocation": {<?= $jobLocation ?>}
+                    <?php endif; ?>
+                    <?php if($this->validThrough){ ?> 
+                    ,"validThrough" : "<?= date('Y-m-d', $this->validThrough) ?>"
+                    <?php } ?>
         }
 </script>
 
