@@ -9,6 +9,16 @@ $GLOBALS['TL_LANG']['tl_job']['employmentType'] = array('Anstellungsart', 'Bitte
 $GLOBALS['TL_LANG']['tl_job']['employmentType']['options'] = array('FULL_TIME' => 'Vollzeit', 'PART_TIME' => 'Teilzeit', 'INTERN' => 'Praktikum', 'TEMPORARY' => 'Vorübergehend', 'CONTRACTOR' => 'Auftragsbasis', 'OTHER' => 'Andere');
 $GLOBALS['TL_LANG']['tl_job']['location'] = array('Standort', 'Bitte wählen Sie den Standort des Jobs aus.');
 $GLOBALS['TL_LANG']['tl_job']['salary'] = array('Gehalt', 'Bitte geben Sie den Gehalt des Jobs ein.');
+$GLOBALS['TL_LANG']['tl_job']['salaryUnit'] = array('Gehalt Einheit', 'Jahr,Monat,Stündlich');
+$GLOBALS['TL_LANG']['tl_job']['salaryUnit']['options'] = array(
+    'MONTH' => 'Monatlich', 
+    'HOUR' => 'Stündlich', 
+    'DAY' => 'Tagesweise', 
+    'WEEK' => 'Wöchentlich', 
+    'YEAR' => 'Jährlich'
+);
+
+
 $GLOBALS['TL_LANG']['tl_job']['validThrough'] = array('Stellenausschreibungen Ablaufdatum', 'Beim entfernen eines Jobs muss das Ablaufdatum in der Vergangenheit liegen');
 
 $GLOBALS['TL_LANG']['tl_job']['description'] = array('Beschreibung', 'Bitte wählen Sie die Beschreibung des Jobs ein.');
@@ -50,7 +60,7 @@ $GLOBALS['TL_LANG']['tl_job']['information_legend'] = 'Jobeigenschaften';
 $GLOBALS['TL_LANG']['tl_job']['image_legend'] = 'Bildeinstellungen';
 $GLOBALS['TL_LANG']['tl_job']['publish_legend'] = 'Veröffentlichung';
 $GLOBALS['TL_LANG']['tl_job']['expert_settings'] = 'Experteneinstellungen';
-$GLOBALS['TL_LANG']['tl_job']['expertsettingsBaseSalary'] = array('BaseSalery Overwrite', 'Default = "@type": "MonetaryAmount","value": "SALARY","currency" : "EUR"       -> see <a href="https://schema.org/baseSalary">schema.org/baseSalary</a>');
+$GLOBALS['TL_LANG']['tl_job']['expertsettingsBaseSalary'] = array('BaseSalery Overwrite', 'Default = "@type": "MonetaryAmount","value": {"@type": "QuantitativeValue","value": SALERY,"unitText": "MONTH"},"currency" : "EUR"       -> see <a href="https://schema.org/baseSalary">schema.org/baseSalary</a>');
 $GLOBALS['TL_LANG']['tl_job']['overwriteCurrency'] = array('Currency Overwrite', 'siehe <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank">wiki/ISO_4217</a>');
 
 

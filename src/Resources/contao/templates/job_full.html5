@@ -44,7 +44,11 @@ $this->loadLanguageFile('tl_job'); ?>
                                 echo $this->expertsettingsBaseSalary; 
                             }else{ ?> 
                                 "@type": "MonetaryAmount",
-                                "value": <?= $this->salary ?> <?= ($currency)? ',' : '' ?>
+                                "value": {
+                                    "@type": "QuantitativeValue",
+                                    "value": <?= $this->salary ?>,
+                                    "unitText": "<?= ($this->salaryUnit ?? 'MONTH') ?>"
+                                } <?= ($currency)? ',' : '' ?>
                                 <?= $currency; ?>
                             <?php } ?>
                         }

@@ -106,7 +106,11 @@
                             echo $this->job->expertsettingsBaseSalary; 
                         }else{ ?> 
                             "@type": "MonetaryAmount",
-                            "value": <?= $this->job->salary ?> <?= ($currency)? ',' : '' ?>
+                            "value": {
+                                    "@type": "QuantitativeValue",
+                                    "value": <?= $this->job->salary ?>,
+                                    "unitText": "<?= ($this->salaryUnit ?? 'MONTH') ?>"
+                                } <?= ($currency)? ',' : '' ?>
                             <?= $currency; ?>
                         <?php } ?>
                     }

@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,validThrough,description, overwriteCurrency;
+			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,salaryUnit,validThrough,description, overwriteCurrency;
 			{meta_legend},metaTitle,metaDescription;
 		    {publish_legend},published,featured,start,stop;
             {expert_settings},expertsettingsBaseSalary;
@@ -208,6 +208,18 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'tl_class' => 'w50'
             ),
             'sql' => 'int(10) default NULL'
+        ),
+        'salaryUnit' =>  array(
+            'inputType' => 'select',
+            'options' => ($GLOBALS['TL_LANG']['tl_job']['salaryUnit']['options'] ?? []),
+            'eval' => array(
+                'mandatory' => false,
+                'tl_class' => 'w50',
+                'chosen' => true,
+                'multiple' => false
+            ),
+            'default'=>'MONTH',
+            'sql' => "text NULL"
         ),
         'description' => array
         (
