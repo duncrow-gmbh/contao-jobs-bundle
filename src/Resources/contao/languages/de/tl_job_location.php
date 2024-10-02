@@ -12,3 +12,6 @@ $GLOBALS['TL_LANG']['tl_job_location']['edit'] = 'Standort ID %s bearbeiten';
  * Legends
  */
 $GLOBALS['TL_LANG']['tl_job_location']['address_legend'] = 'Adressdaten';
+
+$GLOBALS['TL_LANG']['tl_job_location']['expert_settings'] = 'Experteneinstellungen';
+$GLOBALS['TL_LANG']['tl_job_location']['expertsettingsJobLocation'] = array('JobLocation Overwrite', 'Default = "@type": "Place", "address": { "@type": "PostalAddress", "streetAddress": "ADDRESS", "addressLocality": "PLACE", "addressRegion": "REGION", "postalCode": "ZIP", "addressCountry": "AT" }      -> see <a href="https://schema.org/jobLocation">schema.org/jobLocation</a>');

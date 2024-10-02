@@ -56,5 +56,3 @@ $GLOBALS['TL_LANG']['tl_module']['all_items'] = 'Alle Jobs anzeigen';
 $GLOBALS['TL_LANG']['tl_module']['featured'] = 'Nur hervorgehobene Jobs anzeigen';
 $GLOBALS['TL_LANG']['tl_module']['unfeatured'] = 'Hervorgehobene Jobs überspringen';
 $GLOBALS['TL_LANG']['tl_module']['featured_first'] = 'Hervorgehobene Jobs zuerst anzeigen';
-
-$GLOBALS['TL_LANG']['tl_module']['job_single_option'] = array('Job Anzeige (SingleOption)', 'Wählen Sie die Darstellungsart der Single Options aus.');

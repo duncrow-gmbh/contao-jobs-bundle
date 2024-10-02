@@ -221,7 +221,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['job_single_option'] = array(
     'exclude' => true,
     'inputType' => 'select',
     'options' => array('online' => 'Online (= redirect to formular)', 'telephone' => 'Telephone', 'meeting'=>'Meeting'),
-    'eval' => array('mandatory' => true, 'tl_class' => 'w50', 'includeBlankOption'=>true,'blankOptionLabel'=>'unset (show all options)'),
+    'eval' => array('mandatory' => false, 'tl_class' => 'w50', 'includeBlankOption'=>true,'blankOptionLabel'=>'unset (show all options)'),
     'sql' => "varchar(16) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['job_featured'] = array(

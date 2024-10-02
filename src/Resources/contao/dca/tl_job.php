@@ -107,9 +107,11 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,validThrough,description;
+			{general_legend},title,alias,language,linkedJobs,employmentType,location,salary,validThrough,description, overwriteCurrency;
 			{meta_legend},metaTitle,metaDescription;
-		    {publish_legend},published,featured,start,stop
+		    {publish_legend},published,featured,start,stop;
+            {expert_settings},expertsettingsBaseSalary;
+
 		'
     ),
 
@@ -212,6 +214,22 @@ $GLOBALS['TL_DCA'][$strName] = array
             'search' => true,
             'inputType' => 'textarea',
             'eval' => array('mandatory' => false, 'rte' => 'tinyMCE', 'tl_class' => 'clr'),
+            'sql' => "text NULL"
+        ),
+        'overwriteCurrency' => array
+        (
+            'inputType'               => 'text',
+            'exclude'                 => true,
+            'default'                 => 'EUR',
+            'eval'                    => array('tl_class'=>'clr',  'maxlength'=>255),
+             'sql' => 'text NULL'
+        ),
+
+        'expertsettingsBaseSalary' => array
+        (
+            'search' => false,
+            'inputType' => 'textarea',
+            'eval' => array('mandatory' => false, 'preserveTags'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'tl_class'=>'clr'),
             'sql' => "text NULL"
         ),
 

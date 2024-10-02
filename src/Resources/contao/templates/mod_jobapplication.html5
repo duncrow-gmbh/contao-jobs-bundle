@@ -69,36 +69,59 @@
     <span class="me-2">{{far::chevron-left}}</span><?= $GLOBALS['TL_LANG']['tl_job']['TEMPLATE']['back'] ?>
 </button>
 
+<?php 
+                $currency; 
+                if(isset($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_defaultCurrency'])){
+                    $currency = '"currency" : "'.$GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_defaultCurrency'].'"'; 
+                }
+                if(isset($this->overwriteCurrency) && $this->job->overwriteCurrency){
+                    $currency = '"currency" : "'.$this->job->overwriteCurrency.'"'; 
+                }
+                
+            ?>
+
 <script type="application/ld+json">
+    
         {
-            "@context": "https://schema.org/",
-            "@type": "JobPosting",
-            "title": "<?= $this->job->title ?>",
-            "description": "<?= $this->job->description ?>",
-            "datePosted": "<?= date('Y-m-d', $this->job->tstamp) ?>",
-            "hiringOrganization": {
-                <?php if(isset($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']) && strpos($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'], '"')!==false){
-                            echo $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']; 
-                        }else { ?>
-                            "@type" : "Organization",
-                            "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
-                        <?php }?>
-            }<?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
-                            ,"employmentType": <?= $employmentType ?>
-                    <?php endif; ?>
-                    <?php if($this->salary): ?>
-                        ,"baseSalary": {
+                "@context": "https://schema.org/",
+                "@type": "JobPosting",
+                "title": "<?= $this->job->title ?>",
+                "description": "<?= $this->job->description ?>",
+                "datePosted": "<?= date('Y-m-d', $this->job->tstamp) ?>",
+                "hiringOrganization": {
+                    <?php if(isset($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']) && strpos($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'], '"')!==false){
+                        echo $GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization']; 
+                    }else { ?>
+                        "@type" : "Organization",
+                        "name" : "<?= ($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_hiringOrganization'] ?? '') ?>"
+                    <?php }?>
+                    
+                }
+                <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->job->employmentType)): ?>
+                        ,"employmentType": <?= $employmentType ?>
+                <?php endif; ?>
+                <?php if($this->job->salary){ ?>
+                    ,"baseSalary": {
+                        <?php if($this->job->expertsettingsBaseSalary){
+                            echo $this->job->expertsettingsBaseSalary; 
+                        }else{ ?> 
                             "@type": "MonetaryAmount",
-                            "value": "<?= $this->salary ?>"
-                        }
-                    <?php endif; ?>
-                    <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
-                            ,"jobLocation": {<?= $jobLocation ?>}
-                    <?php endif; ?>
-                    <?php if($this->validThrough){ ?> 
-                    ,"validThrough" : "<?= date('Y-m-d', $this->validThrough) ?>"
-                    <?php } ?>
-        }
+                            "value": <?= $this->job->salary ?> <?= ($currency)? ',' : '' ?>
+                            <?= $currency; ?>
+                        <?php } ?>
+                    }
+                <?php } else if($this->job->expertsettingsBaseSalary){ ?>
+                    ,"baseSalary": {
+                            <?= $this->job->expertsettingsBaseSalary ?> 
+                    }
+                <?php } ?>
+                <?php if($jobLocation = Helper::getStructuredDataForLocation($this->job->location)): ?>
+                        ,"jobLocation": {<?= $jobLocation ?>}
+                <?php endif; ?>
+                <?php if($this->job->validThrough){ ?> 
+                ,"validThrough" : "<?= date('Y-m-d', $this->job->validThrough) ?>"
+                <?php } ?>
+            }
 </script>
 
 <?php $this->endblock(); ?>

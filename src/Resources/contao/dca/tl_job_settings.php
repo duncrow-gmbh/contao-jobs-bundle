@@ -18,7 +18,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__' => array(),
         'default' => '
-			{structuredData_legend},contaojobsbundle_structuredData_hiringOrganization,contaojobsbundle_structuredData_jobLocation;
+			{structuredData_legend},contaojobsbundle_structuredData_hiringOrganization,contaojobsbundle_structuredData_defaultCurrency;
 		'
     ),
 
@@ -34,6 +34,13 @@ $GLOBALS['TL_DCA'][$strName] = array
         (
             'inputType'               => 'textarea',
             'eval'                    => array('style'=>'height:120px', 'preserveTags'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'tl_class'=>'clr'),
+        ),
+        'contaojobsbundle_structuredData_defaultCurrency' => array
+        (
+            'inputType'               => 'text',
+            'exclude'                 => true,
+            'default'                 => 'EUR',
+            'eval'                    => array('tl_class'=>'clr',  'maxlength'=>255),
         )
     )
 );

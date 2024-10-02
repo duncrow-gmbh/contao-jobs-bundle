@@ -1,8 +1,16 @@
 {
   "name": "duncrow-gmbh/contao-jobs-bundle",
-  "version": "4.0.5",
+  "version": "4.1.0",
   "type": "contao-bundle",
+  "homepage" : "https://github.com/duncrow-gmbh/contao-jobs-bundle",
   "license": "LGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Duncrow GmbH",
+      "email": "office@duncrow.com",
+      "homepage": "https://duncrow.com"
+    }
+  ],
   "require": {
     "terminal42/contao-changelanguage": "^3.3",
     "netzmacht/contao-font-awesome-inserttag": "^2.2",

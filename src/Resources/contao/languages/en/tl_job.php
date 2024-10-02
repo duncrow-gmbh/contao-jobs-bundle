@@ -49,8 +49,6 @@ $GLOBALS['TL_LANG']['tl_job']['meta_legend'] = 'Metadaten';
 $GLOBALS['TL_LANG']['tl_job']['information_legend'] = 'Jobeigenschaften';
 $GLOBALS['TL_LANG']['tl_job']['image_legend'] = 'Bildeinstellungen';
 $GLOBALS['TL_LANG']['tl_job']['publish_legend'] = 'Veröffentlichung';
-$GLOBALS['TL_LANG']['tl_job']['expert_settings'] = 'Experteneinstellungen';
+$GLOBALS['TL_LANG']['tl_job']['expert_settings'] = 'Expertsettings';
 $GLOBALS['TL_LANG']['tl_job']['expertsettingsBaseSalary'] = array('BaseSalery Overwrite', 'Default = "@type": "MonetaryAmount","value": "SALARY","currency" : "EUR"       -> see <a href="https://schema.org/baseSalary">schema.org/baseSalary</a>');
 $GLOBALS['TL_LANG']['tl_job']['overwriteCurrency'] = array('Currency Overwrite', 'siehe <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank">wiki/ISO_4217</a>');
-
-

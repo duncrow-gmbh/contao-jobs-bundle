@@ -76,7 +76,10 @@ $GLOBALS['TL_DCA']['tl_job_location'] = array
     'palettes' => array
     (
         '__selector__' => array(),
-        'default' => '{address_legend},street,postal,city,state,country;'
+        'default' => '
+            {address_legend},street,postal,city,state,country;
+            {expert_settings},expertsettingsJobLocation;
+        '
     ),
 
     // Subpalettes
@@ -140,7 +143,14 @@ $GLOBALS['TL_DCA']['tl_job_location'] = array
                 return array_combine(array_map('strtolower', array_keys($countries)), $countries);
             },
             'sql' => "varchar(2) NOT NULL default ''"
-        )
+        ),
+        'expertsettingsJobLocation' => array
+        (
+            'search' => false,
+            'inputType' => 'textarea',
+            'eval' => array('mandatory' => false, 'preserveTags'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'tl_class'=>'clr'),
+            'sql' => "text NULL"
+        ),
     )
 );
 

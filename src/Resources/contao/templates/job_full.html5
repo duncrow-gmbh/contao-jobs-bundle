@@ -8,7 +8,18 @@ $this->loadLanguageFile('tl_job'); ?>
                 <?= implode('', $this->elements) ?>
             </div>
 
+            <?php 
+                $currency; 
+                if(isset($GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_defaultCurrency'])){
+                    $currency = '"currency" : "'.$GLOBALS['TL_CONFIG']['contaojobsbundle_structuredData_defaultCurrency'].'"'; 
+                }
+                if(isset($this->overwriteCurrency) && $this->overwriteCurrency){
+                    $currency = '"currency" : "'.$this->overwriteCurrency.'"'; 
+                }
+                
+            ?>
             <script type="application/ld+json">
+                
                 {
                     "@context": "https://schema.org/",
                     "@type": "JobPosting",
@@ -27,12 +38,21 @@ $this->loadLanguageFile('tl_job'); ?>
                     <?php if($employmentType = Helper::getStructuredDataForEmploymentType($this->employmentType)): ?>
                             ,"employmentType": <?= $employmentType ?>
                     <?php endif; ?>
-                    <?php if($this->salary): ?>
+                    <?php if($this->salary){ ?>
                         ,"baseSalary": {
-                            "@type": "MonetaryAmount",
-                            "value": "<?= $this->salary ?>"
+                            <?php if($this->expertsettingsBaseSalary){
+                                echo $this->expertsettingsBaseSalary; 
+                            }else{ ?> 
+                                "@type": "MonetaryAmount",
+                                "value": <?= $this->salary ?> <?= ($currency)? ',' : '' ?>
+                                <?= $currency; ?>
+                            <?php } ?>
                         }
-                    <?php endif; ?>
+                    <?php } else if($this->expertsettingsBaseSalary){ ?>
+                        ,"baseSalary": {
+                                <?= $this->expertsettingsBaseSalary ?> 
+                        }
+                    <?php } ?>
                     <?php if($jobLocation = Helper::getStructuredDataForLocation($this->location)): ?>
                             ,"jobLocation": {<?= $jobLocation ?>}
                     <?php endif; ?>
